@@ -164,8 +164,14 @@ io.on("connect", (socket) => {
         idOfDevice: idOfDevice,
         username: username,
       });
+      io.emit("res-android-send-server-id-of-device", {
+        status: "success",
+      });
     } catch (err) {
       console.log(err);
+      io.emit("res-android-send-server-id-of-device", {
+        status: "error",
+      });
     }
   });
 });
